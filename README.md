@@ -5,6 +5,7 @@
 <h4 align="center"> . </h4>
 
 # 🚀 Setup
+Basta instalar o APK no seu device Android e então liberar manualmente a permissão de localização nas configurações.
 
 Tutorial
 Descobrindo sua localização atual por GPS ou inserindo manualmente, obtendo coordenadas:
