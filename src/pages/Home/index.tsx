@@ -6,6 +6,7 @@
 import React, {useState} from 'react';
 import MapView from 'react-native-maps';
 import useLocation from '../../hooks/useLocation';
+import { Text } from 'react-native';
 
 export default function HomeScreen() {
   const [latitude, setLatitude] = useState(-20.398259);
@@ -21,6 +22,7 @@ export default function HomeScreen() {
         height: '100%',
         width: '100%',
         position: 'absolute',
+        flex: 1,
       }} // Fazendo com que o mapa ocupe a tela inteira
       initialRegion={{
         latitude, //posição inicial do mapa
