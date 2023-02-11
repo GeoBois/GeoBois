@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/95629365/218281234-b7674aa9-b924-451c-b659-53152b14366f.png" />
+</p>
+
 # GeoBoisApp
 
 # Setup
@@ -6,7 +10,7 @@
 
 
 
-# Tutorial
+🚀 Tutorial
 Descobrindo sua localização atual por GPS ou inserindo manualmente, obtendo coordenadas:
 
 GIF:
@@ -42,7 +46,7 @@ Possui a funcionalidade que auxilia a estabelecer a melhor rota entre dois ponto
 
 Possui a funcionalidade de informar a distância entre dois pontos
 
-# Links Úteis
+# 🔗 Links Úteis
 Figma: https://www.figma.com/file/95Au357Grv0HbLZLGGoCSg/GeoBois-App?node-id=0%3A1&t=gPa7dP4OZbR4hAiH-0
 
 Trello: https://trello.com/b/Wu9xCxgJ/geo-bois-app
@@ -110,7 +114,7 @@ Criação e realização do Plano de Testes
 
 Implementação de pontos do MVP2 (Incompleto)
 
-# Versões
+# 🧭 Versões
 v1.0 - Primeiro protótipo funcional, baseado em template
 
 v1.1 - Criação e implementação do design system
@@ -125,7 +129,7 @@ v1.5 - Implementação de login e SplashScreen
 
 v1.6 - Implementação de gerador de rotas
 
-# Tecnologias utilizadas
+# 🛠 Tecnologias utilizadas
 React Native
 
 Firebase
