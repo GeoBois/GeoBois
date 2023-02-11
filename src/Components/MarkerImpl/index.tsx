@@ -12,12 +12,12 @@ export default function MarkerImpl({onPress, mark}) {
       key={mark.place_id} //como temos vários marcadores, devemos adicionar um id para cada
       coordinate={{
         //aqui nós inserimos a localização do marcador no mapa
-        latitude: mark.geometry?.location.lat,
-        longitude: mark.geometry?.location.lng,
+        latitude: mark?.geometry?.location.lat,
+        longitude: mark?.geometry?.location.lng,
       }}
       title={mark.name} //título do marcador
     >
-      <Icon name="location" size={25} color={color} />
+      <Icon name="location" size={70} color={color} />
     </Marker>
   );
 }

@@ -9,6 +9,7 @@ import useLocation from '../../hooks/useLocation';
 import { View, StyleSheet } from 'react-native';
 import Bootom from '../../Components/Bootom';
 import MarkerImpl from '../../Components/MarkerImpl';
+import MapViewDirections from 'react-native-maps-directions';
 
 export default function HomeScreen() {
   const {coords, errorMsg} = useLocation();
@@ -16,8 +17,10 @@ export default function HomeScreen() {
   const [longitude, setLongitude] = useState<any>();
   const [pontosRefencia, setPontosReferencia] = useState<[]>([]);
   const [endereco, setEndereco] = useState('');
+  const [localDirection, setLocalDirection] = useState<any>(null);
   const apiKey = 'AIzaSyAlo0EjLzymr_1Jtwsk8Fr108wy7V2Jk5E';
   const mapRef = useRef(null);
+  const [chamadaApi, setChamadaApi] = useState(false);
 
   const setCordinates = async() => {
     await mapRef.current.animateToRegion({
@@ -34,22 +37,9 @@ export default function HomeScreen() {
     setCordinates();
   },[coords]);
 
-  useEffect(() => {
-    console.log('chamada reference', {latitude, longitude});
-    const url =
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?location=${latitude}%2C-${longitude}}&query=mercados&radius=5000&key=${apiKey}`;
 
-    fetch(url)
-      .then(data => data.json())
-      .then(data => {
-        console.log('refenreces', data);
-        setPontosReferencia(data.results);
-      });
-
-  },[latitude, longitude]);
 
   const buscarEndereco = () => {
-
     const urlEnderecoBuscado = `https://maps.googleapis.com/maps/api/geocode/json?address=${endereco}&key=${apiKey}`;
 
     fetch(urlEnderecoBuscado)
@@ -61,13 +51,33 @@ export default function HomeScreen() {
         latitudeDelta: 0.015,
         longitudeDelta: 0.0121,
       });
-      console.log('latitude busca', data.results[0]?.geometry.location.lat);
+      console.log('latitude busca', data.results[0]);
       setLatitude(data.results[0]?.geometry.location.lat);
       setLongitude(data.results[0]?.geometry.location.lng);
     });
   };
-  console.log('useLocations', coords);
-  console.log('coordenadas', {latitude, longitude});
+
+  const buscarReferencias = () => {
+    const url =
+      `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=mercado&location=${latitude}%2C${longitude}&radius=500&key=${apiKey}`;
+
+    fetch(url)
+      .then(data => data.json())
+      .then(data => {
+        setPontosReferencia(data.results);
+      });
+    };
+
+    useEffect(() => {
+      buscarReferencias();
+
+    },[chamadaApi, latitude, longitude]);
+
+    const setLocation = (latitude: number, longitude: number) => {
+      setLocalDirection({latitude, longitude});
+    };
+
+    console.log('location', localDirection);
   return (
     <View style={Styles.container}>
     <Header endereco={endereco} setEndereco={setEndereco}  />
@@ -88,7 +98,26 @@ export default function HomeScreen() {
         latitudeDelta: 0.195,
         longitudeDelta: 0.1921,
       }}
-    />
+    >
+      {
+        pontosRefencia.map((maker) => (
+          <MarkerImpl
+            key={maker.place_id}
+            mark={maker}
+            onPress={() => setLocation(maker?.geometry?.location.lat, maker?.geometry?.location.lng)}
+          />
+        ))
+      }
+
+    <MapViewDirections
+        strokeWidth={3}
+        strokeColor="red"
+        origin={coords}
+        destination={localDirection}
+        apikey={apiKey}
+        mode="DRIVING"
+      />
+    </MapView>
     <Bootom latitude={latitude} longitude={longitude} buscar={endereco ? buscarEndereco : () => {}}/>
     </View>
   );
