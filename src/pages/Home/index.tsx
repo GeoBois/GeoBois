@@ -1,8 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* src/screens/home */
-//importando as dependências necessárias
 import React, {useState} from 'react';
 import MapView from 'react-native-maps';
 import useLocation from '../../hooks/useLocation';
@@ -18,7 +16,7 @@ export default function HomeScreen() {
     <MapView
       showsUserLocation={true} //destacando a localização do usuário no mapa
       showsMyLocationButton={true} //ocultando o botão que move o mapa para a localização do usuário
-      toolbarEnabled={false} //ocultando opções do google maps ao clicar em objetos do mapa
+      toolbarEnabled={true} //ocultando opções do google maps ao clicar em objetos do mapa
       style={{
         height: '100%',
         width: '100%',
@@ -32,6 +30,7 @@ export default function HomeScreen() {
         longitudeDelta: 0.1921, //determina o zoom do mapa
         ...coords, // Aqui sobrescrevemos as variáveis latitude e longitude com a posição do usuário obtida no hook que criamos para obter a localização.
       }}
+      mar
     />
   );
 }
