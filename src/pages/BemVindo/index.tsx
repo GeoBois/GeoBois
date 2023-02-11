@@ -1,11 +1,23 @@
 import { View, Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import GeoBoisLight from "../../assests/GeoBoisLight.png";
 import GoogleIcone from "../../assests/GoogleIcon.png";
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import auth from "@react-native-firebase/auth";
+
+async function signinWithGoogle() {
+  const { idToken } = await GoogleSignin.signIn();
+  const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+  return auth().signInWithCredential(googleCredential);
+}
 
 export const LoginGoogleBotao: React.FC = () => {
   
   function login() {
     console.log("App faz login com Google");
+
+    (async () => {
+      await signinWithGoogle();
+    })();
   }
   
   return (
