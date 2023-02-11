@@ -2,6 +2,7 @@
 import React from 'react';
 import {Marker} from 'react-native-maps';
 import {Image} from 'react-native';
+import marker from '../../assests/giphy.gif';
 
 export default function MarkerImpl({onPress, mark}) {
   return (
@@ -16,7 +17,7 @@ export default function MarkerImpl({onPress, mark}) {
       }}
       title={`Marker_${mark.title}`} //título do marcador
     >
-      <Image source={{uri: '../../assests/giphy.gif'}} />
+      <Image source={marker} />
     </Marker>
   );
 }

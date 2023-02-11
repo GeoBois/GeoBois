@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable prettier/prettier */
 /* src/hooks */
 //importando as dependências necessárias
 import {useState, useEffect} from 'react';
@@ -8,7 +10,10 @@ import {Platform} from 'react-native';
 
 export default () => {
   const [errorMsg, setErrorMsg] = useState(''); // será utilizado para armazenar alguma mensagem de erro, caso ocorra
-  const [coords, setCoords] = useState(null); //vai armazenar a localização atual
+  const [coords, setCoords] = useState({
+    latitude: 0,
+    longitude: 0,
+  }); //vai armazenar a localização atual
   // criando um useEffect que será executado uma vez quando o Hook for chamado (parâmetro passado ao fim da função é vazio).
   useEffect(() => {
     (async function loadPosition() {
@@ -40,7 +45,7 @@ export default () => {
       });
 
       // caso as permissões tenham sido obtidas com sucesso, result será true e a localização do usuário poderá ser obtida.
-      if (result) {
+      if (await result) {
         await Geolocation.getCurrentPosition(
           //se as permissões foram aceitas, obtemos a localização aqui
           ({coords}) => {
@@ -51,7 +56,7 @@ export default () => {
             });
           },
           error => {
-            setErrorMsg('Não foi possível obter a localização');
+            setErrorMsg(`Não foi possível obter a localização: ${error}`);
           },
           {
             enableHighAccuracy: true,
