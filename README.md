@@ -13,15 +13,17 @@
 🚀 Tutorial
 Descobrindo sua localização atual por GPS ou inserindo manualmente, obtendo coordenadas:
 
-GIF:
+GIF: (Incompleto)
 
 Descobrindo o melhor caminho (rota) entre dois pontos e a distância entre estes:
 
-GIF:
+GIF: (Incompleto)
 
 Descobrindo os pontos de referência ao redor do local:
 
-GIF:
+GIF: (Incompleto)
+
+Como o aplicativo é uma APK, basta instalar no seu Dispositivo Android e já está pronto para utilização!
 
 # Manual do usuário
 Login
