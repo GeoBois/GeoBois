@@ -2,15 +2,11 @@
   <img src="https://user-images.githubusercontent.com/95629365/218281234-b7674aa9-b924-451c-b659-53152b14366f.png" />
 </p>
 
-# GeoBoisApp
+<h4 align="center"> . </h4>
 
-# Setup
+# 🚀 Setup
 
-
-
-
-
-🚀 Tutorial
+Tutorial
 Descobrindo sua localização atual por GPS ou inserindo manualmente, obtendo coordenadas:
 
 GIF:
@@ -148,7 +144,7 @@ FIGMA (prototipação de alta fidelidade)
 
 PAINT (prototipação de baixa fidelidade)
 
-# Decisões para encantamento
+# 🏆 Decisões para encantamento
 Paleta de cores Instivo
 
 Diversão (Incompleto)
