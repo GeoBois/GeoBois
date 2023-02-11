@@ -1,12 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-import HomeScreen from './src/pages/home';
-
 import React from 'react';
+import HomeScreen from './src/pages/Home/index';
 import {SafeAreaView} from 'react-native';
 
 function App() {

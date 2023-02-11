@@ -5,7 +5,7 @@
 //importando as dependências necessárias
 import React, {useState} from 'react';
 import MapView from 'react-native-maps';
-import useLocation from '../hooks/useLocation';
+import useLocation from '../../hooks/useLocation';
 
 export default function HomeScreen() {
   const [latitude, setLatitude] = useState(-20.398259);
