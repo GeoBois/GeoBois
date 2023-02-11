@@ -12,17 +12,16 @@ interface IBootomProps {
 
 
 const Bootom = ({ buscar, latitude, longitude }: IBootomProps) => {
-  console.log('bootom', {latitude, longitude});
   return (
   <View style={styles.container}>
     <TouchableOpacity style={styles.botao} onPress={buscar}>
-      <Text>
+      <Text style={styles.textoBotao}>
         Buscar
       </Text>
     </TouchableOpacity>
     <View style={styles.coordenadas}>
-      <Text>Latitude: {latitude}</Text>
-      <Text>Longitude: {longitude}</Text>
+      <Text style={styles.coordTexto}>Latitude: {latitude}</Text>
+      <Text style={styles.coordTexto}>Longitude: {longitude}</Text>
     </View>
     <View style={styles.menu}>
       <Text>Home</Text>
@@ -68,7 +67,14 @@ const styles = StyleSheet.create({
   },
   coordenadas: {
     flexDirection: 'row',
-    gap: 10,
+    gap: 8,
     marginBottom: 7,
+    color: '#000',
+  },
+  coordTexto: {
+    color: '#000',
+  },
+  textoBotao: {
+    color: '#000',
   },
 });

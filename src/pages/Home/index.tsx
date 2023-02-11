@@ -12,42 +12,62 @@ import MarkerImpl from '../../Components/MarkerImpl';
 
 export default function HomeScreen() {
   const {coords, errorMsg} = useLocation();
-  const [latitude, setLatitude] = useState(-27.5448985);
-  const [longitude, setLongitude] = useState(-48.5023547);
-  const [pontos, setPontos] = useState();
+  const [latitude, setLatitude] = useState<any>();
+  const [longitude, setLongitude] = useState<any>();
+  const [pontosRefencia, setPontosReferencia] = useState<[]>([]);
   const [endereco, setEndereco] = useState('');
   const apiKey = 'AIzaSyAlo0EjLzymr_1Jtwsk8Fr108wy7V2Jk5E';
   const mapRef = useRef(null);
 
+  const setCordinates = async() => {
+    await mapRef.current.animateToRegion({
+      latitudeDelta: 0.015,
+      longitudeDelta: 0.0121,
+      ...coords,
+    });
+    setLatitude(coords.latitude);
+    setLongitude(coords.longitude);
+  };
 
-  function handleRegionChanged(region: { latitude: React.SetStateAction<number>; longitude: React.SetStateAction<number>; }) {
-    setLatitude(region.latitude);
-    setLongitude(region.longitude);
-  }
 
   useEffect(() => {
+    setCordinates();
+  },[coords]);
+
+  useEffect(() => {
+    console.log('chamada reference', {latitude, longitude});
     const url =
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?location=${latitude}%2C-${longitude}}&query=mercados&radius=500&key=${apiKey}`;
+      `https://maps.googleapis.com/maps/api/place/textsearch/json?location=${latitude}%2C-${longitude}}&query=mercados&radius=5000&key=${apiKey}`;
 
     fetch(url)
       .then(data => data.json())
-      .then(data => setPontos(data.results));
+      .then(data => {
+        console.log('refenreces', data);
+        setPontosReferencia(data.results);
+      });
 
-  },[]);
+  },[latitude, longitude]);
 
   const buscarEndereco = () => {
+
     const urlEnderecoBuscado = `https://maps.googleapis.com/maps/api/geocode/json?address=${endereco}&key=${apiKey}`;
 
     fetch(urlEnderecoBuscado)
     .then(data => data.json())
     .then(data => {
-      console.log('res',data.results[0].geometry.location);
+      mapRef.current.animateToRegion({
+        latitude: data.results[0]?.geometry.location.lat,
+        longitude: data.results[0]?.geometry.location.lng,
+        latitudeDelta: 0.015,
+        longitudeDelta: 0.0121,
+      });
+      console.log('latitude busca', data.results[0]?.geometry.location.lat);
       setLatitude(data.results[0]?.geometry.location.lat);
       setLongitude(data.results[0]?.geometry.location.lng);
     });
   };
-
-  console.log('endereco', latitude, longitude);
+  console.log('useLocations', coords);
+  console.log('coordenadas', {latitude, longitude});
   return (
     <View style={Styles.container}>
     <Header endereco={endereco} setEndereco={setEndereco}  />
@@ -55,21 +75,18 @@ export default function HomeScreen() {
       ref={mapRef}
       provider={PROVIDER_GOOGLE}
       showsUserLocation={true}
-      onRegionChangeComplete={handleRegionChanged}
       showsMyLocationButton={true}
       toolbarEnabled={true}
       style={{
-        // height: '100%',
         width: '100%',
-        // position: 'absolute',
         flex: 1,
       }}
       initialRegion={{
+        ...coords,
         latitude,
         longitude,
         latitudeDelta: 0.195,
         longitudeDelta: 0.1921,
-        ...coords,
       }}
     />
     <Bootom latitude={latitude} longitude={longitude} buscar={endereco ? buscarEndereco : () => {}}/>
