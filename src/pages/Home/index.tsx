@@ -12,7 +12,6 @@ export default function HomeScreen() {
   const [longitude, setLongitude] = useState(-43.507726); //utilizaremos estas duas variáveis (latitude e longitude) como posições padrão caso não seja possível obter a posição do usuário.
 
   const {coords, errorMsg} = useLocation(); //utilizando o hook que vai nos fornecer a posição do usuário.
-
   return (
     <MapView
       showsUserLocation={true} //destacando a localização do usuário no mapa
