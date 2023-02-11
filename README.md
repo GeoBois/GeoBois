@@ -13,19 +13,17 @@
 🚀 Tutorial
 Descobrindo sua localização atual por GPS ou inserindo manualmente, obtendo coordenadas:
 
-GIF: (Incompleto)
+GIF:
 
 Descobrindo o melhor caminho (rota) entre dois pontos e a distância entre estes:
 
-GIF: (Incompleto)
+GIF:
 
 Descobrindo os pontos de referência ao redor do local:
 
-GIF: (Incompleto)
+GIF:
 
-Como o aplicativo é uma APK, basta instalar no seu Dispositivo Android e já está pronto para utilização!
-
-# Manual do usuário
+# :pencil: Manual do usuário
 Login
 
 Existe a ferramenta de login mediante credencial de e-mail
@@ -59,7 +57,7 @@ GitHub: https://github.com/GeoBois/GeoBois.git - Conectar para visualizar
 
 Documentação rascunhada: https://docs.google.com/document/d/1fnw41YfBk6AFV2a4OTrG2DPS8UJ8HJo7OIMyYkNoxA4/edit
 
-# Planejamento
+# 📗 Planejamento
 Utilização de Kanban como Framework de Agilidade
 
 Criação de aplicação Mobile para facilitar integração futura com o Combate
@@ -70,7 +68,7 @@ MVP2 - Sugestões criativas para melhorar o uso e implementar funcionalidades
 
 Criação de encantamento no usuário
 
-# Divisão de trabalho
+# 👨 Divisão de trabalho
 Front-end - Thiago e João
 
 Back-end - João e Júlio
@@ -81,7 +79,7 @@ Negócio - Rafael
 
 PO - Rafael
 
-# Etapas
+# 🚩 Etapas
 Discussão de ambiente 
 
 Discussão de Framework
@@ -161,7 +159,7 @@ EasterEggs (Incompleto)
 
 Aplicação mobile para facilitar a abstração e reutilização de código
 
-# Plano de testes
+# 📋 Plano de testes
 
 Verificar o acesso ao aplicativo por e-mail Google
 
