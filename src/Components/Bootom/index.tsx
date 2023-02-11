@@ -8,10 +8,14 @@ interface IBootomProps {
   buscar(): void;
     latitude: number;
     longitude: number;
+    distance: {
+      distance: string,
+      duration: string;
+    }
 }
 
 
-const Bootom = ({ buscar, latitude, longitude }: IBootomProps) => {
+const Bootom = ({ buscar, latitude, longitude, distance }: IBootomProps) => {
   return (
   <View style={styles.container}>
     <TouchableOpacity style={styles.botao} onPress={buscar}>
@@ -24,9 +28,8 @@ const Bootom = ({ buscar, latitude, longitude }: IBootomProps) => {
       <Text style={styles.coordTexto}>Longitude: {longitude}</Text>
     </View>
     <View style={styles.menu}>
-      <Text>Home</Text>
-      <Text>Minha Localização</Text>
-      <Text>Pontos de referencias</Text>
+      <Text>Distancia até o local: { distance.distance } </Text>
+      <Text>Tempo até o local: { distance.duration }  </Text>
     </View>
   </View>
   );
